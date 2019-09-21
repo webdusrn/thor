@@ -121,7 +121,7 @@ function drawBug ($cv, bugQueue, current) {
 
     $cv.drawImage({
         layer: true,
-        source: 'images/bugs/' + fileName,
+        source: 'pages/thor/images/bugs/' + fileName,
         name: name,
         x: x,
         y: y,
@@ -133,11 +133,12 @@ function drawBug ($cv, bugQueue, current) {
         shadowY: 10,
         rotate: angle,
         touchstart: function (layer) {
-            var $effect = $('<audio src="/audios/effect.mp3">');
+            var $effect = $('<audio src="/pages/thor/audios/effect.mp3">');
             $effect.bind("ended", function (e) {
                 $(this).remove();
             });
             $('body').append($effect);
+            $effect[0].load();
             $effect[0].play();
 
             for (var i = 0; i < bugQueue.length; i++) {
